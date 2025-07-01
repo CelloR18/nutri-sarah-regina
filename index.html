@@ -173,52 +173,49 @@
     </div>
   </section>
 
-  <section id="contato" class="section-light" data-anime="top">
+ <section id="contato" class="section-light" data-anime="top">
     <div class="container">
-      <h2 class="section-title">Entre em <span>contato</span></h2>
-      <div class="contact-grid">
-        <div class="contact-info" data-anime="left">
-          <h3>Informações</h3>
-          <p><i class="fas fa-map-marker-alt"></i> Consultório: Clinica Bom Jesus, Rua Antônio Venâncio Lopes, 3-40 - Presidente Epitácio/SP</p>
+        <h2 class="section-title">Entre em <span>contato</span></h2>
+        <div class="contact-grid">
+            <div class="contact-info" data-anime="left">
+                <h3>Informações</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Consultório: Clinica Bom Jesus, Rua Antônio Venâncio Lopes, 3-40 - Presidente Epitácio/SP</p>
+            </div>
+            <div class="contact-form" data-anime="right">
+                <form id="whatsappForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Como posso te ajudar?" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">
+                        <i class="fab fa-whatsapp"></i> Enviar Mensagem
+                    </button>
+                </form>
+            </div>
         </div>
-        <div class="contact-form" data-anime="right">
-          <form action="https://api.whatsapp.com/send" method="get" target="_blank">
-            <div class="form-group">
-              <input type="text" name="name" placeholder="Seu nome" required>
-            </div>
-            <div class="form-group">
-              <input type="email" name="email" placeholder="Seu e-mail" required>
-            </div>
-            <div class="form-group">
-              <input type="tel" name="phone" placeholder="Seu telefone (opcional)">
-            </div>
-            <div class="form-group">
-              <textarea name="message" placeholder="Sua mensagem" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="cta-button">
-              <i class="fas fa-paper-plane"></i> Enviar Mensagem
-            </button>
-          </form>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <footer data-anime="top">
+ <footer data-anime="top">
     <div class="container">
-      <div class="footer-content">
-        <p>&copy; 2023 Nutricionista Sarah Regina. Todos os direitos reservados.</p>
-      </div>
-      <div class="footer-links">
-        <a href="#">Política de Privacidade</a>
-        <a href="#">Termos de Uso</a>
-         <a href="https://www.instagram.com/nutrisarahregina" target="_blank"><i class="fab fa-instagram"></i></a>
-         
-      </div>
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://www.instagram.com/nutrisarahregina" target="_blank" class="instagram-btn">
+                    <i class="fab fa-instagram"></i> @nutrisarahregina
+                </a>
+            </div>
+            <p>&copy; 2025 Nutricionista Sarah Regina. Todos os direitos reservados.</p>
+        </div>
+        <div class="footer-links">
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos de Uso</a>
+        </div>
     </div>
-  </footer>
+</footer>
 
-  <a class="whatsapp-float" href="https://wa.me/SEUNUMEROAQUI" target="_blank">
+  <a class="whatsapp-float" href="https://wa.me/+5521979156857" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -289,5 +286,32 @@
     document.body.style.opacity = 0;
     document.body.style.transition = 'opacity 0.5s ease, visibility 0.5s ease';
   </script>
+  <script>
+    // Formulário WhatsApp Simplificado
+    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Obter valores do formulário
+        const name = document.getElementById('name').value.trim();
+        const message = document.getElementById('message').value.trim();
+        
+        // Número de telefone (substitua pelo seu número com código do país e DDD)
+        const phoneNumber = "SEU_NUMERO_WHATSAPP"; // Ex: 5511987654321
+        
+        // Criar mensagem formatada
+        const formattedMessage = `*Mensagem de ${name}*%0A%0A${message}%0A%0A_Enviado através do site_`;
+        
+        // URL do WhatsApp
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${formattedMessage}`;
+        
+        // Abrir no WhatsApp
+        window.open(whatsappUrl, '_blank');
+        
+        // Opcional: Limpar o formulário após envio
+        this.reset();
+    });
+
+    // Restante do seu código JavaScript...
+</script>
 </body>
 </html>
