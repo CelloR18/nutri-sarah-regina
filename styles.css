@@ -42,6 +42,79 @@ body {
   font-family: 'Great Vibes', cursive;
 }
 
+/* Classes para animações */
+[data-anime] {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-anime="left"] {
+  transform: translate3d(-50px, 0, 0);
+}
+
+[data-anime="right"] {
+  transform: translate3d(50px, 0, 0);
+}
+
+[data-anime="top"] {
+  transform: translate3d(0, -50px, 0);
+}
+
+[data-anime="bottom"] {
+  transform: translate3d(0, 50px, 0);
+}
+
+[data-anime].animate {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animação de slide-up */
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animação de slide-left */
+@keyframes slideLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animação de slide-right */
+@keyframes slideRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* Tipografia */
 h1, h2, h3, h4 {
   font-weight: 600;
@@ -66,11 +139,10 @@ p {
   margin-bottom: 1rem;
 }
 
-
 /* Header */
 header {
-  background-color: var(--primary-dark);
-  color: var(--white);
+  background-color: rgb(194, 245, 194);
+  color:  var(--primary-dark);
   padding: 2rem 0;
 }
 
@@ -208,9 +280,10 @@ header {
 .sticky-nav {
   position: sticky;
   top: 0;
-  background-color: var(--primary-color);
+  background-color: rgb(155, 243, 155);
   z-index: 1000;
   box-shadow: var(--box-shadow);
+  color: green;
 }
 
 .sticky-nav .container {
@@ -221,7 +294,7 @@ header {
 }
 
 .sticky-nav a {
-  color: var(--white);
+  color: green;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.8rem;
@@ -248,7 +321,7 @@ header {
   justify-content: center;
   text-align: center;
   color: var(--white);
-  background: url('./assets/background-image.jpg')center/cover no-repeat;
+  background: url('./assets/background-image.jpg') center/cover no-repeat;
 }
 
 .hero-overlay {
@@ -297,6 +370,7 @@ section {
   text-align: center;
   margin-bottom: 2.5rem;
   position: relative;
+  animation: fadeIn 1s ease both;
 }
 
 .section-title::after {
@@ -321,6 +395,7 @@ section {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: var(--box-shadow);
+  animation: slideLeft 0.8s ease both;
 }
 
 .profile-image img {
@@ -332,6 +407,10 @@ section {
 
 .profile-image:hover img {
   transform: scale(1.03);
+}
+
+.profile-content {
+  animation: slideRight 0.8s ease both 0.2s;
 }
 
 .social-links {
@@ -361,11 +440,13 @@ section {
 
 .app-content {
   order: 2;
+  animation: slideLeft 0.8s ease both;
 }
 
 .app-image {
   order: 1;
   text-align: center;
+  animation: slideRight 0.8s ease both 0.2s;
 }
 
 .app-icon {
@@ -489,6 +570,7 @@ section {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: var(--box-shadow);
+  animation: fadeIn 1s ease both 0.3s;
 }
 
 .behavioral-image img {
@@ -504,10 +586,12 @@ section {
 
 .left-text {
   order: 2;
+  animation: slideLeft 0.8s ease both;
 }
 
 .right-text {
   order: 3;
+  animation: slideRight 0.8s ease both;
 }
 
 /* Contact Grid */
@@ -523,6 +607,7 @@ section {
   border-radius: 10px;
   box-shadow: var(--box-shadow);
   order: 2;
+  animation: slideLeft 0.8s ease both;
 }
 
 .contact-info h3 {
@@ -550,6 +635,7 @@ section {
   border-radius: 10px;
   box-shadow: var(--box-shadow);
   order: 1;
+  animation: slideRight 0.8s ease both 0.2s;
 }
 
 .form-group {
@@ -641,6 +727,7 @@ footer {
   color: var(--white);
   padding: 2rem 0;
   text-align: center;
+  animation: fadeIn 1s ease both;
 }
 
 .footer-content {
@@ -665,7 +752,7 @@ footer {
   color: var(--primary-light);
 }
 
-/* Responsividade */
+/* Responsividade - Mobile */
 @media (max-width: 767px) {
   .mobile-header {
     display: block;
@@ -850,6 +937,7 @@ footer {
   }
 }
 
+/* Versão Desktop - Melhorias */
 @media (min-width: 992px) {
   h1 {
     font-size: 3rem;
@@ -866,6 +954,71 @@ footer {
   .sticky-nav a {
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
+  }
+
+  /* Profile Grid - Desktop */
+  .profile-grid {
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  
+  .profile-image img {
+    max-height: 400px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  /* App Section - Desktop */
+  .app-grid {
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  .app-content {
+    order: 1;
+  }
+  
+  .app-image {
+    order: 2;
+  }
+  
+  .app-icon {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Behavioral Section - Desktop */
+  .behavioral-grid {
+    grid-template-columns: 1fr 400px 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  .behavioral-image img {
+    max-height: 500px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .behavioral-text {
+    padding: 0;
+  }
+
+  /* Contact Grid - Desktop */
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  
+  .contact-info {
+    order: 1;
+  }
+  
+  .contact-form {
+    order: 2;
   }
 }
 
